@@ -34,7 +34,15 @@ dependencies {
   implementation("io.vertx:vertx-hazelcast")
   implementation("io.vertx:vertx-mail-client")
   implementation("io.vertx:vertx-rx-java3")
-  implementation("com.ongres.scram:client:2.1")
+  implementation("com.ongres.scram:scram-client:2.1")
+
+  implementation("io.vertx:vertx-config:5.0.3")
+
+  implementation("commons-logging:commons-logging:1.1.1")
+  implementation("org.slf4j:slf4j-api:2.0.16")
+  implementation("ch.qos.logback:logback-classic:1.4.5")
+
+
   testImplementation("io.vertx:vertx-junit5")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
@@ -42,6 +50,16 @@ dependencies {
 java {
   sourceCompatibility = JavaVersion.VERSION_21
   targetCompatibility = JavaVersion.VERSION_21
+}
+
+
+application {
+  mainClass.set("org.lonpe.Application")
+   applicationDefaultJvmArgs = listOf(
+           // "-XX:MaxRAMPercentage=75.0",
+           // "-Dspring.profiles.active=development",
+           // hazelcastArgs
+       )    
 }
 
 tasks.withType<ShadowJar> {
